@@ -41,7 +41,7 @@
                         <div class="form-group">
                         <label for="account">帳號 *</label>
                             <input type="text" class="form-control" id="account" name="account"
-                                   value="<?= htmlentities($r['account']) ?>">
+                                   value="<?= htmlentities($r['account']) ?>" disabled>
                             <small class="form-text "></small>
                         </div>
                         <div class="form-group">

@@ -13,19 +13,7 @@ $output = [
     'postData' => $_POST,
 ];
 
-// 練習題解答：避免用戶用get方式(輸入網址)直接拜訪時的錯誤訊息(data-insert-api.php)
-// 20210811090106- 17:17~22:10
-if(
-    empty($_POST['sid']) or
-    empty($_POST['name']) or
-    empty($_POST['email']) or
-    empty($_POST['mobile']) or
-    empty($_POST['birthday']) or
-    empty($_POST['address'])
-){
-    echo json_encode($output);
-    exit;
-}
+
 
 
 // 資料格式檢查

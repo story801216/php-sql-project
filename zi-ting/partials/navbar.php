@@ -11,9 +11,7 @@
                 <li class="nav-item active">
                     <a class="nav-link" href="data-list.php">資料列表</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="data-insert.php">新增</a>
-                </li>
+
 
             </ul>
 
@@ -38,7 +36,7 @@
                         <a class="nav-link" href="login.php">登入</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">註冊</a>
+                    <a class="nav-link" href="data-insert.php">註冊</a>
                     </li>
                 <?php endif; ?>
             </ul>

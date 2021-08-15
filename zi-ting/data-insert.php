@@ -20,43 +20,47 @@
                                   <!-- onsubmit:在表單送出之前觸發   return false:取消預設行為     -->
                     <form name="form1" onsubmit="checkForm(); return false;">
                         <div class="form-group">
-                            <label for="name">帳號 *</label>
+                            <label for="account">帳號 *</label>
                             <input type="text" class="form-control" id="account" name="account" placeholder="帳號最少為6位數字或英文">
                             <small class="form-text "></small>
                         </div>
-                    <form name="form1" onsubmit="checkForm(); return false;">
+
                         <div class="form-group">
-                            <label for="name">密碼 *</label>
+                            <label for="password">密碼 *</label>
                             <input type="text" class="form-control" id="password" name="password" placeholder="密碼最少為6位數字或英文">
                             <small class="form-text "></small>
                         </div>
-                    <form name="form1" onsubmit="checkForm(); return false;">
+
                         <div class="form-group">
                             <label for="name">姓名 *</label>
                             <input type="text" class="form-control" id="name" name="name" placeholder="請輸入姓名">
                             <small class="form-text "></small>
                         </div>
-                    <form name="form1" onsubmit="checkForm(); return false;">
+
                         <div class="form-group">
-                            <label for="name">身分證字號 *</label>
+                            <label for="idnumber">身分證字號 *</label>
                             <input type="text" class="form-control" id="idnumber" name="idnumber" placeholder="身分證字號為10位數字或英文">
                             <small class="form-text "></small>
                         </div>
+
                         <div class="form-group">
                             <label for="email">email *</label>
                             <input type="text" class="form-control" id="email" name="email" placeholder="請輸入信箱">
                             <small class="form-text "></small>
                         </div>
+
                         <div class="form-group">
                             <label for="mobile">mobile</label>
                             <input type="text" class="form-control" id="mobile" name="mobile" placeholder="請輸入手機號碼">
                             <small class="form-text "></small>
                         </div>
+
                         <div class="form-group">
                             <label for="birthday">birthday</label>
                             <input type="date" class="form-control" id="birthday" name="birthday" >
                             <small class="form-text "></small>
                         </div>
+
                         <div class="form-group">
                             <label for="address">address</label>
                             <input type="text" class="form-control" id="address" name="address" placeholder="請輸入聯絡地址">

@@ -37,15 +37,7 @@
                     <form name="form1" onsubmit="checkForm(); return false;">
                         <input type="hidden" name="sid" value="<?= $r['sid'] ?>">  
                         <!-- ↑多增加一個要包在Header的值(sid)，這樣就可以透過Header告訴後端目前要更改的是哪一筆資料，但因為頁面上不需要顯示，所以用 type="hidden"隱藏起來，20210811101636-07:28~10:20 -->
-                        <div class="form-group">
-                            <label for="name">姓名 *</label>
-                            <input type="text" class="form-control" id="name" name="name"
-                                value="<?= htmlentities($r['name']) ?>">
-                                <!-- 將資料裡原本的值顯示出來 -->
-                                <!--如果原本的值有加上「""」雙引號的話(ex留"梓庭" 再頁面上就只會出現「留"」剩下的無效值就是「梓庭"」)，會被html本來的雙引號給截斷就不會顯示出來了(無效的值，出BUG)，但是如果再input輸出之前加上htmlentities()去做跳脫所有含有對應“html實體”的特殊字元，就可以把「留"梓庭"」完整的顯示出來20210811101636-00:00~01:10  -->
-                                <!-- php過濾輸入操作之htmlentities用法:https://reurl.cc/mLKVkV -->
-                            <small class="form-text "></small>
-                        </div>
+                        
                         <div class="form-group">
                         <label for="account">帳號 *</label>
                             <input type="text" class="form-control" id="account" name="account"

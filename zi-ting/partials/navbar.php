@@ -21,13 +21,9 @@
                          <a class="nav-link" ><?= $_SESSION['user']['name'] ?></a> <!--把href拿掉的用意在於登入後['nickname']就沒有可點入的部分 -->
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="profile-edit.php">編輯個人資料</a> <!--編輯個人資料按鈕製作20210812090115-09:20~ -->
+                        <a class="nav-link" href="data-edit.php">編輯個人資料</a> <!--編輯個人資料按鈕製作20210812090115-09:20~ -->
                     </li> 
-                    <!-- <li class="nav-item">
-                        <?php if(! empty( $_SESSION['user']['avatar'])): ?>
-                            <img src="imgs/<?= $_SESSION['user']['avatar'] ?>" alt="" width="50px">
-                        <?php endif; ?>
-                    </li>-->
+
                     <li class="nav-item">
                         <a class="nav-link" href="logout.php">登出</a>
                     </li>

@@ -25,7 +25,7 @@ if(!isset($_POST['account']) or !isset($_POST['password'])){
 
 // 1.拿到該筆資料
 // 透過用戶從外界輸入的E-mail(email=?)，來去核對資料表的E-mail欄位，進而獲得該筆資料
-$sql = "SELECT * FROM members WHERE email=?";
+$sql = "SELECT * FROM address_book WHERE account=?";
 $stmt = $pdo->prepare($sql);
 $stmt->execute([$_POST['account']]);
 $m = $stmt->fetch();
@@ -39,7 +39,7 @@ if(empty($m)){
 }
 
 // 3.比對密碼
-if(! password_verify($_POST['password'], $m['password'])){
+if(empty($m['password'])){
     $output['error'] = '密碼錯誤';
     $output['code'] = 405;
     echo json_encode($output, JSON_UNESCAPED_UNICODE);

@@ -54,12 +54,12 @@
                         </div>
                         <div class="form-group">
                             <label for="birthday">birthday</label>
-                            <input type="date" class="form-control" id="birthday" name="birthday">
+                            <input type="date" class="form-control" id="birthday" name="birthday" >
                             <small class="form-text "></small>
                         </div>
                         <div class="form-group">
                             <label for="address">address</label>
-                            <input type="text" class="form-control" id="address" name="address">
+                            <input type="text" class="form-control" id="address" name="address" placeholder="請輸入聯絡地址">
                             <small class="form-text "></small>
                         </div>
 

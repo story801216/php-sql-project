@@ -5,12 +5,9 @@
     $title = '修改會員資料';
 
 
-    // 步驟1.拿到sid的值 20210811090106-34:23 ~ 43:44
     $sid = isset($_GET['sid']) ? intval($_GET['sid']) : 0;
 
     $sql = "SELECT * FROM `address_book` WHERE sid=$sid";
-
-    //  echo $sql; exit;   -->  可作為除錯用  SELECT * FROM `address_book` WHERE sid=$sid
 
     $r = $pdo->query($sql)->fetch(); // 可透過fetch()得到單筆資料的關聯式陣列，但如果輸入錯誤的sid值的話(沒有該筆資料)，就會回傳false
 
@@ -32,11 +29,11 @@
         <div class="col-md-6">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">修改資料</h5> <!-- 步驟2.製作修改表單20210811090106-50:10~59:50 -->
+                    <h5 class="card-title">修改資料</h5> 
 
                     <form name="form1" onsubmit="checkForm(); return false;">
                         <input type="hidden" name="sid" value="<?= $r['sid'] ?>">  
-                        <!-- ↑多增加一個要包在Header的值(sid)，這樣就可以透過Header告訴後端目前要更改的是哪一筆資料，但因為頁面上不需要顯示，所以用 type="hidden"隱藏起來，20210811101636-07:28~10:20 -->
+                        <!-- ↑多增加一個要包在Header的值(sid)，這樣就可以透過Header告訴後端目前要更改的是哪一筆資料，但因為頁面上不需要顯示，所以用 type="hidden"隱藏起來 -->
                         
                         <div class="form-group">
                         <label for="account">帳號 *</label>
@@ -84,7 +81,7 @@
                         <div class="form-group">
                             <label for="address">address</label>
                             <textarea class="form-control" id="address" name="address" cols="30" rows="3"
-                                 ><?= htmlentities($r['address']) ?></textarea> <!-- textarea接PHP時，中間不要留空白20210811101636-01:13~07:19 -->
+                                 ><?= htmlentities($r['address']) ?></textarea> <!-- textarea接PHP時，中間不要留空白 -->
                             <small class="form-text "></small>
                         </div>
 

@@ -75,11 +75,6 @@ $keyword = isset($_GET['keyword']) ? $_GET['keyword'] : '';
         table tbody i.fas.fa-trash-alt {
             color: darkred;
         }
-        table tbody i.fas.fa-trash-alt.ajaxDelete {
-            color: darkorange;    /* 讓ajax垃圾桶變成橘色 */
-            cursor: pointer;      
-            /* 但因為ajax垃圾桶不是a標籤所以沒有鼠標沒有點擊效果的形狀，所以用cursor: pointer就可以讓鼠標有點擊的形狀了20210810101652-36:32~37:05  */
-        }
     </style>
 <div class="container">
  <div class="row" >   <!-- 製作查詢功能的欄位20210811111500-41:56~49:00 -->
@@ -144,9 +139,11 @@ $keyword = isset($_GET['keyword']) ? $_GET['keyword'] : '';
                 <thead>
                 <tr>
                     <th scope="col"><i class="fas fa-trash-alt"></i></th> <!-- 刪除icon title -->
-                    <th scope="col"><i class="fas fa-trash-alt"> ajax</i></th> <!-- ajax的刪除icon title 20210810101652-34:40~35:12 -->
                     <th scope="col">sid</th>
+                    <th scope="col">account</th>
+                    <th scope="col">password</th>
                     <th scope="col">name</th>
+                    <th scope="col">idnumber</th>
                     <th scope="col">email</th>
                     <th scope="col">mobile</th>
                     <th scope="col">birthday</th>
@@ -172,11 +169,11 @@ $keyword = isset($_GET['keyword']) ? $_GET['keyword'] : '';
                         </button> 
                         -->
                     </td>
-                    <td>
-                        <i class="fas fa-trash-alt ajaxDelete"></i>
-                    </td>
                     <td><?= $r['sid'] ?></td>
+                    <td><?= $r['account'] ?></td>
+                    <td><?= $r['password'] ?></td>
                     <td><?= $r['name'] ?></td>
+                    <td><?= $r['idnumber'] ?></td>
                     <td><?= $r['email'] ?></td>
                     <td><?= $r['mobile'] ?></td>
                     <td><?= $r['birthday'] ?></td>
@@ -200,82 +197,8 @@ $keyword = isset($_GET['keyword']) ? $_GET['keyword'] : '';
     
 
 </div>
-    <!-- Modal -->
-    <!-- 
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">刪除注意</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    ...
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary modal-del-btn">Delete</button>
-                </div>
-            </div>
-        </div>
-    </div> -->
+    
 
 
 <?php include __DIR__. '/partials/scripts.php'; ?>
-<script>
-    //  以下是點到橘色ajax垃圾桶時，必須要知道sid的值，才能決定要刪除哪一筆資料的做法 20210810101652-42:17~20210810112603-18:03
-
-    // 利用事件的浮出(event.target)，這樣就只需要設定一個就可以了
-    const myTable = document.querySelector('table');
-    // const modal = $('#exampleModal');
-
-    myTable.addEventListener('click', function(event){
-
-        // ↓判斷有沒有點到橙色的垃圾筒:先找到<i class="fas fa-trash-alt ajaxDelete"></i>，之後在透過closest去找到他上一層的 <tr data-sid="<?= $r['sid'] ?>">
-        if(event.target.classList.contains('ajaxDelete')){ // 如果被點擊的標籤裡的classList含(contains)有ajaxDelete這個classname的話就執行if裡面的程式碼
-            // console.log(event.target.closest('tr'));
-            const tr = event.target.closest('tr');      //先找到帶有ajaxDelete這個classname標籤後，再透過closest去找到該標籤上一層的「tr」標籤
-            const sid = tr.getAttribute('data-sid');   //再透過找到「tr」標籤後，就可以找到裡面的<tr data-sid="<?= $r['sid'] ?>">
-
-            console.log(`tr.dataset.sid:`, tr.dataset.sid); //sid也可以這樣拿(PS 不管用dataset拿sid還是用getAttribute拿sid都必須要先得到tr的值才有辦法拿);(dataset是用來獲取data開頭屬性的資料)20210810112603-21:14~32:40
-
-             // 確認是否要刪除該筆資料
-            if(confirm(`是否要刪除編號為 ${sid} 的資料？`)){
-                fetch('data-delete-api.php?sid=' + sid)
-                    .then(r=>r.json())
-                    .then(obj=>{
-                        if(obj.success){
-                            tr.remove();  // 從 DOM 裡移除元素
-                            // TODO: 1. 刷頁面, 2. 取得該頁的資料再呈現
-
-                        } else {
-                            alert(obj.error);
-                        }
-                    });
-            }
-
-        }
-    });
-/*
-    let willDeleteId = 0;
-    $('.del1btn').on('click', function(event){
-        willDeleteId = event.target.closest('tr').dataset.sid;
-        console.log(willDeleteId);
-        modal.find('.modal-body').html(`確定要刪除編號為 ${willDeleteId} 的資料嗎？`);
-    });
-
-    // 按了確定刪除的按鈕
-    modal.find('.modal-del-btn').on('click', function(event){
-        console.log(`data-delete.php?sid=${willDeleteId}`);
-        location.href = `data-delete.php?sid=${willDeleteId}`;
-    });
-
-    // modal 一開始顯示時觸發
-    modal.on('show.bs.modal', function(event){
-        // console.log(event.target);
-    }); 
-    */
-</script>
 <?php include __DIR__. '/partials/html-foot.php'; ?>

@@ -12,22 +12,56 @@ $output = [
 ];
 
 
-// 後端的姓名資料格式檢查
+// 後端的資料格式檢查
+
+// 檢查帳號長度
+if(mb_strlen($_POST['account'])<6){
+    $output['error'] = '帳號長度太短';
+    $output['code'] = 401;
+    echo json_encode($output);
+    exit;
+};
+
+// 檢查密碼長度
+if(mb_strlen($_POST['password'])<6){
+    $output['error'] = '密碼長度太短';
+    $output['code'] = 402;
+    echo json_encode($output);
+    exit;
+};
 // 如果姓名少於兩個字符的話就執行if裡面的程式碼
 
 if(mb_strlen($_POST['name'])<2){
     $output['error'] = '姓名長度太短';
-    $output['code'] = 410;
+    $output['code'] = 403;
     echo json_encode($output);
     exit;
 };
+
+// 檢查身分證字號長度
+if(mb_strlen($_POST['idnumber'])<10){
+    $output['error'] = '請填寫正確的身分證字號';
+    $output['code'] = 404;
+    echo json_encode($output);
+    exit;
+};
+
+
 
 // 後端的E-mail資料格式檢查
 // FILTER_VALIDATE_EMAIL過濾器:把值作為e-mail 地址來驗證
 // 如果$_POST['email'不是E-mail的格式的話，就執行if裡面的程式碼
 if(! filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)){
     $output['error'] = 'email 格式錯誤';
-    $output['code'] = 420;
+    $output['code'] = 405;
+    echo json_encode($output);
+    exit;
+};
+
+// 檢查手機號碼長度
+if(mb_strlen($_POST['mobile'])<10){
+    $output['error'] = '請填寫正確的手機號碼';
+    $output['code'] = 406;
     echo json_encode($output);
     exit;
 };

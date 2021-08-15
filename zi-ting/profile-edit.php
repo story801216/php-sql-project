@@ -174,7 +174,7 @@
                     console.log(obj);
                     if(obj.success){
                         alert('修改成功');
-                        location.href = 'data-list.php';
+                        location.href = 'profile-edit.php';
                     } else {
                         alert(obj.error);
                     }

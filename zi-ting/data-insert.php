@@ -152,7 +152,8 @@
                 .then(obj=>{
                     console.log(obj);
                     if(obj.success){
-                        location.href = 'data-list.php';
+                        alert('註冊成功將前往登入頁面')
+                        location.href = 'login.php';
                     } else {
                         alert(obj.error);
                     }

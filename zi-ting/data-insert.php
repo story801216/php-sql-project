@@ -33,7 +33,7 @@
                     <form name="form1" onsubmit="checkForm(); return false;">
                         <div class="form-group">
                             <label for="name">姓名 *</label>
-                            <input type="text" class="form-control" id="name" name="name">
+                            <input type="text" class="form-control" id="name" name="name" placeholder="請輸入姓名">
                             <small class="form-text "></small>
                         </div>
                     <form name="form1" onsubmit="checkForm(); return false;">
@@ -77,7 +77,7 @@
 <?php include __DIR__. '/partials/scripts.php'; ?>
 <script>
     const email_re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    const mobile_re = /^09\d{2}-?\d{3}-?\d{3}$/;
+    const mobile_re = /^09\d{2}?\d{3}?\d{3}$/;
 
     
 
@@ -118,7 +118,7 @@
 
 
 
-        if(idnumber.value.length = 10){  // 檢查'idnumber'字串是否有超過十個字以上
+        if(idnumber.value.length <= 9 ){  // 檢查'idnumber'字串是否有超過十個字以上
             isPass = false;         // 如果沒有的話就不通過
             idnumber.nextElementSibling.innerHTML = '請填寫正確的身分證字號'; //不通過的話就show出請填寫'正確的身分證字號'的字樣
             idnumber.style.border = '1px red solid';// 不通過就將border改為紅色

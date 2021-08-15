@@ -33,8 +33,11 @@ if(! filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)){
 
 // ↓20210811090106-22:40~ 28:29
 // 以sid為條件(就是對應的該筆資料)，再透過下方的execute來去依序帶入更新後的值(SET裡 WHERE 前的最後一筆資料記得不要加「，」，不然就會語法錯誤，記得一定要下WHERE(條件:該筆資料)，如果沒有家WHERE就會把該資料表裡的所有資料都一併修改)
-$sql = "UPDATE `address_book` SET   
+$sql = "UPDATE `address_book` SET 
+                          `account`=?,
+                          `password`=?,  
                           `name`=?,
+                          `idnumber`=?,
                           `email`=?,
                           `mobile`=?,
                           `birthday`=?,
@@ -43,7 +46,10 @@ $sql = "UPDATE `address_book` SET
 
 $stmt = $pdo->prepare($sql);
 $stmt->execute([
+    $_POST['account'],
+    $_POST['password'],
     $_POST['name'],
+    $_POST['idnumber'],
     $_POST['email'],
     $_POST['mobile'],
     $_POST['birthday'],

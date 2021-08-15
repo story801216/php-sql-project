@@ -13,7 +13,7 @@
     }
 
     // 2.如果有登入就透過$_SESSION裡的['user']['id']去拿到資料
-    $sql = "SELECT * FROM `members` WHERE id=". intval($_SESSION['user']['id']);
+    $sql = "SELECT * FROM `address_book` WHERE sid=". intval($_SESSION['user']['sid']);
 
     $r = $pdo->query($sql)->fetch();  // 3.拿到個人資料
 
@@ -37,29 +37,59 @@
                     <h5 class="card-title">修改個人資料</h5>
 
                     <form name="form1" onsubmit="checkForm(); return false;">
-                        <div class="form-group">
-                            <label for="avatar">大頭貼</label>
-                            <input type="file" class="form-control" id="avatar" name="avatar" accept="image/*">
-                            <?php if(empty( $r['avatar'])): ?>
-                                <!-- 預設的大頭貼 -->
-                            <?php else: ?>
-                                <!-- ↓顯示已上傳的的大頭貼20210812102753-20:23 ~ 35:31 -->
-                                <img src="imgs/<?= $r['avatar'] ?>" alt="" width="300px">
-                            <?php endif; ?>
 
+                    <div class="form-group">
+                            <label for="account">帳號(登入的帳號不可以修改)</label>
+                            <input type="text" class="form-control" id="account" name="account"
+                                   value="<?= htmlentities($r['account']) ?>" disabled>
+                            <small class="form-text "></small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="password">密碼</label>
+                            <input type="text" class="form-control" id="password" name="password"
+                                   value="<?= htmlentities($r['password']) ?>">
+                            <small class="form-text "></small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="name">姓名</label>
+                            <input type="text" class="form-control" id="name" name="name"
+                                   value="<?= htmlentities($r['name']) ?>">
+                            <small class="form-text "></small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="idnumber">身份證字號</label>
+                            <input type="text" class="form-control" id="idnumber" name="idnumber"
+                                   value="<?= htmlentities($r['idnumber']) ?>">
+                            <small class="form-text "></small>
                         </div>
                         <div class="form-group">
-                            <label for="email">email (登入的帳號不可以修改)</label>
-                            <input type="text" class="form-control" disabled
+                            <label for="email">E-mail</label>
+                            <input type="text" class="form-control"
                                    value="<?= htmlentities($r['email']) ?>">
                             <small class="form-text "></small><!-- disabled:input的屬性之一，會讓該input失去功能-->
                         </div>
                         <div class="form-group">
-                            <label for="nickname">暱稱</label>
-                            <input type="text" class="form-control" id="nickname" name="nickname"
-                                   value="<?= htmlentities($r['nickname']) ?>">
+                            <label for="mobile">手機號碼</label>
+                            <input type="text" class="form-control" id="mobile" name="mobile"
+                                   value="<?= htmlentities($r['mobile']) ?>">
                             <small class="form-text "></small>
                         </div>
+                        <div class="form-group">
+                            <label for="birthday">生日</label>
+                            <input type="date" class="form-control" id="birthday" name="birthday"
+                                   value="<?= htmlentities($r['birthday']) ?>">
+                            <small class="form-text "></small>
+                        </div>
+                        <div class="form-group">
+                            <label for="address">地址</label>
+                            <input type="text" class="form-control" id="address" name="address"
+                                   value="<?= htmlentities($r['address']) ?>">
+                            <small class="form-text "></small>
+                        </div>
+                        
 
                         <button type="submit" class="btn btn-primary">修改</button>
                     </form>

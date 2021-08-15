@@ -6,11 +6,11 @@ $db_name = 'testproject';  // 主機資料庫的名稱
 $db_user = 'story801216';//Mysql目前的使用者帳號
 $db_pass = '123';//Mysql目前的使用者密碼
 
-// data source name(中間都不要有空格)
-$dsn = "mysql:host={$db_host};dbname={$db_name};charset=utf8";
-//             主機位置↑         資料庫名稱↑
 
-// PDO可以根據底層的driver來去連不同的伺服器
+$dsn = "mysql:host={$db_host};dbname={$db_name};charset=utf8";
+
+
+
 $pdo_options = [
     PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,    // 發生錯誤的話會以EXCEPTION形式呈現
     PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC, // 拿資料的時候，每一筆都會以關聯式陣列呈現
@@ -18,6 +18,6 @@ $pdo_options = [
 ];
 
 $pdo = new PDO($dsn, $db_user, $db_pass, $pdo_options);
-//↑PDO全部大寫是代表變數類型
+
 
 

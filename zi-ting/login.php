@@ -27,12 +27,12 @@
                     <form name="form1" onsubmit="sendForm(); return false;">
                         <div class="form-group">
                             <label for="account">帳號</label>
-                            <input type="text" class="form-control" id="account" name="account" placeholder="請輸入註冊的信箱">
+                            <input type="text" class="form-control" id="account" name="account" placeholder="請輸入帳號">
                             <small class="form-text">請填寫帳號</small>
                         </div>
                         <div class="form-group">
                             <label for="password">密碼</label>
-                            <input type="password" class="form-control" id="password" name="password">
+                            <input type="password" class="form-control" id="password" name="password" placeholder="請輸入6位數密碼">
                             <small class="form-text">請填寫密碼</small>
                         </div>
 

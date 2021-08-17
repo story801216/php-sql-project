@@ -27,7 +27,7 @@ if (!empty($keyword)) {
 
 
 // 總共有幾筆
-$totalRows = $pdo->query("SELECT count(1) FROM product $where")
+$totalRows = $pdo->query("SELECT count(1) FROM products $where")
     ->fetch(PDO::FETCH_NUM)[0];
 $totalPages = ceil($totalRows / $perPage); // 正數是無條件進位
 
@@ -47,7 +47,7 @@ if ($totalRows != 0) {
 
     // LIMIT後面如果有兩個數，第一個是開始的數(索引號從0開始)，第二個是展示的數量
     $sql = sprintf(
-        "SELECT * FROM product %s ORDER BY sid DESC LIMIT %s, %s",
+        "SELECT * FROM products %s ORDER BY sid DESC LIMIT %s, %s",
         $where,
         ($page - 1) * $perPage,
         $perPage
